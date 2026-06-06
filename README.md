@@ -19,7 +19,7 @@ utilitários para avaliar e salvar resultados para análise e plotagem.
 
 ## Setup
 
-1. Instale as dependências (ver `requirements.txt`).
+1. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
@@ -45,3 +45,20 @@ Saídas em `results/`:
 - `summary.csv` — uma linha por algoritmo com métricas agregadas
 - `predictions_<algo>.csv` — previsões verdadeiras e previstas por par usuário-item
 - `recommendations_<algo>.csv` — recomendações ranqueadas por usuário com indicador de acerto
+
+Gerar gráficos
+---------------
+
+Para gerar scatter plots, curvas ROC e matrizes de confusão a partir das
+previsões salvas, use o script `charts.py`. Os arquivos PDF são salvos em
+`results/charts/<algo>/`.
+
+Exemplos:
+
+```bash
+# gerar gráficos para todos os algoritmos presentes em results/
+python charts.py
+
+# gerar apenas para um algoritmo registrado (ex.: simple_memory)
+python charts.py simple_memory
+```
