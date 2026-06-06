@@ -62,3 +62,15 @@ python charts.py
 # gerar apenas para um algoritmo registrado (ex.: simple_memory)
 python charts.py simple_memory
 ```
+
+
+## Algoritmos incluídos
+
+- `memoryBased/simple_memory.py`: baselines simples (popularidade, médias por usuário/item).
+- `memoryBased/user_based.py`: kNN baseado em usuários (cosine sobre ratings centrados).
+- `memoryBased/item_based.py`: kNN baseado em itens (adjusted-cosine / similaridade por itens).
+- `memoryBased/slope_one.py`: algoritmo Slope One com suavização por contagem (shrinkage).
+- `modelBased/simple_model.py`: baseline com biases globais/usuário/item.
+- `modelBased/regularized_svd.py`: SVD regularizado (SGD, fatores latentes, biases).
+- `modelBased/bpr.py`: BPR (pairwise ranking) para feedback implícito.
+- `modelBased/fm.py`: Factorization Machines (one-hot user/item features, extensível).
