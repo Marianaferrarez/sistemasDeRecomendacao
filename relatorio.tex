@@ -1,0 +1,458 @@
+\documentclass[sigconf,nonacm]{acmart}
+
+\usepackage[brazilian]{babel}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{subcaption}
+
+\settopmatter{printacmref=false}
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\pagestyle{plain}
+
+\title{Comparação de Algoritmos de Filtragem Colaborativa sobre a Base MovieLens 100k}
+
+\author{Mariana Ferreira Ferrarez Ribeiro}
+\affiliation{
+  \institution{Universidade Federal Rural do Rio de Janeiro}
+  \department{Curso: Ciência da Computação}
+}
+
+\author{Rafael Vieira}
+\affiliation{
+  \institution{Universidade Federal Rural do Rio de Janeiro}
+  \department{Curso: Ciência da Computação}
+}
+
+\begin{document}
+
+\begin{abstract}
+Este trabalho apresenta a implementação e comparação de oito algoritmos de
+filtragem colaborativa, divididos em abordagens baseadas em memória e baseadas
+em modelo. Os algoritmos foram avaliados sobre a base MovieLens~100k utilizando
+métricas de predição de rating (RMSE, MAE) e de qualidade de recomendação
+(Precision@10, Recall@10, NDCG@10, MAP@10). A hiperparametrização foi
+conduzida via grid search com validação cruzada de 5 folds, e uma análise
+de sensibilidade foi realizada para investigar o impacto dos principais
+hiperparâmetros no desempenho. Os resultados mostram que o SVD Regularizado
+obteve o melhor desempenho em predição de rating (RMSE = 0,933), enquanto o
+BPR apresentou os melhores resultados em métricas de ranking
+(Precision@10 = 0,072).
+\end{abstract}
+
+\maketitle
+
+%% ============================================================
+\section{Introdução}
+
+O crescimento exponencial do comércio eletrônico e das plataformas de conteúdo
+digital tem gerado uma sobrecarga de informações que dificulta a tomada de
+decisão dos usuários. Nesse cenário, os Sistemas de Recomendação (SR) têm
+desempenhado um papel fundamental ao auxiliar os consumidores a encontrar
+produtos e serviços relevantes de forma personalizada~\cite{adomavicius2005}.
+
+Grande parte das pesquisas em SR concentra-se na melhoria dos algoritmos de
+predição para aprimorar a acurácia das recomendações~\cite{ricci2011}. A
+competição Netflix Prize demonstrou que havia oportunidades significativas para
+melhorar os algoritmos existentes, impulsionando pesquisas em técnicas como
+fatoração matricial, que se tornaram estado da arte~\cite{koren2009}.
+
+O objetivo deste trabalho é implementar e comparar diferentes algoritmos de
+filtragem colaborativa, incluindo quatro abordagens baseadas em memória e
+quatro baseadas em modelo. Além da comparação direta, investigamos a
+hiperparametrização de cada algoritmo por meio de grid search com validação
+cruzada de 5 folds, e realizamos uma análise de sensibilidade para avaliar o
+impacto dos principais hiperparâmetros no desempenho dos modelos.
+
+%% ============================================================
+\section{Experimentos}
+
+\subsection{Base de Dados}
+
+Utilizamos a base MovieLens 100k\footnote{https://grouplens.org/datasets/movielens/100k/},
+que contém 100.000 avaliações (ratings de 1 a 5) de 943 usuários sobre 1.682
+filmes. As avaliações são esparsas --- cada usuário avaliou, em média, cerca de
+106 filmes, o que corresponde a uma densidade de aproximadamente 6,3\%.
+
+Para a avaliação final, utilizamos a partição \texttt{ua.base} (90.570
+avaliações para treino) e \texttt{ua.test} (9.430 avaliações para teste),
+fornecidas pelo próprio dataset. Para a hiperparametrização e análise de
+sensibilidade, utilizamos os 5 folds pré-definidos (\texttt{u1}--\texttt{u5}),
+cada um com uma divisão 80/20.
+
+\subsection{Algoritmos Implementados}
+
+Todos os algoritmos foram implementados do zero em Python, sem uso de
+bibliotecas externas de recomendação. A seguir, descrevemos brevemente cada um.
+
+\subsubsection{Baseados em Memória}
+
+\begin{itemize}
+  \item \textbf{Simple Memory}: baseline que combina a média do usuário e a
+    média do item com peso $\alpha$, e recomenda itens por popularidade. A
+    predição é dada por $\hat{r}_{ui} = \alpha \cdot \bar{r}_u + (1-\alpha) \cdot \bar{r}_i$.
+  \item \textbf{User-Based kNN}: calcula a similaridade cosseno entre vetores
+    de ratings centrados pela média do usuário. A predição utiliza a média
+    ponderada dos desvios dos $k$ vizinhos mais similares que avaliaram o item.
+  \item \textbf{Item-Based kNN}: utiliza a similaridade cosseno ajustada
+    (adjusted cosine) entre itens, subtraindo a média do usuário antes do
+    cálculo. A predição é análoga ao user-based, mas sobre vizinhos de itens.
+  \item \textbf{Slope One}: calcula desvios médios entre pares de itens e
+    prediz com base nas avaliações do usuário para outros itens, ponderando
+    pela contagem de co-ocorrências com suavização (shrinkage):
+    $w_{ij} = \frac{c_{ij}}{c_{ij} + \lambda}$, onde $\lambda$ é o fator de shrinkage.
+\end{itemize}
+
+\subsubsection{Baseados em Modelo}
+
+\begin{itemize}
+  \item \textbf{Simple Model}: modelo de biases que decompõe o rating como
+    $\hat{r}_{ui} = \mu + b_u + b_i$, onde $\mu$ é a média global, $b_u$ é o
+    bias do usuário e $b_i$ é o bias do item, estimados com regularização $\lambda$.
+  \item \textbf{SVD Regularizado}: fatoração matricial com fatores latentes
+    treinada via SGD:
+    $\hat{r}_{ui} = \mu + b_u + b_i + \mathbf{p}_u^\top \mathbf{q}_i$.
+    Os parâmetros são otimizados minimizando o erro quadrático com
+    regularização L2 sobre biases e fatores~\cite{koren2009}.
+  \item \textbf{BPR (Bayesian Personalized Ranking)}: otimiza um critério
+    pairwise para ranking, maximizando a diferença de score entre itens
+    positivos (rating $\geq 4$) e negativos amostrados aleatoriamente. Foi
+    projetado para feedback implícito, não para predição de rating.
+  \item \textbf{Factorization Machines (FM)}: generaliza a fatoração matricial
+    usando features one-hot de usuário e item. Modela interações de segunda
+    ordem entre features de forma eficiente:
+    $\hat{y} = w_0 + \sum_i w_i x_i + \sum_{i<j} \langle \mathbf{v}_i, \mathbf{v}_j \rangle x_i x_j$.
+    Treinado via SGD com regularização L2.
+\end{itemize}
+
+\subsection{Métricas de Avaliação}
+
+Avaliamos os algoritmos em duas dimensões complementares:
+
+\textbf{Predição de rating}: mede a qualidade da estimativa numérica da nota.
+\begin{itemize}
+  \item \textbf{RMSE} (Root Mean Squared Error): penaliza erros maiores de
+    forma quadrática, sendo mais sensível a outliers.
+  \item \textbf{MAE} (Mean Absolute Error): fornece o erro médio absoluto, mais
+    interpretável e robusto a outliers que o RMSE.
+\end{itemize}
+
+Utilizamos ambas as métricas pois são complementares: o RMSE é o padrão da
+literatura para comparação~\cite{koren2009}, enquanto o MAE oferece uma
+interpretação mais direta do erro médio.
+
+\textbf{Qualidade de recomendação (top-$K$)}: mede a qualidade da lista
+ordenada de recomendações, considerando como relevantes os itens com
+rating $\geq 4{,}0$ no conjunto de teste.
+\begin{itemize}
+  \item \textbf{Precision@$K$}: fração dos itens recomendados que são relevantes.
+  \item \textbf{Recall@$K$}: fração dos itens relevantes que foram recomendados.
+  \item \textbf{NDCG@$K$}: considera a posição dos acertos, atribuindo maior
+    importância a itens relevantes no topo da lista.
+  \item \textbf{MAP@$K$}: média da precisão nos pontos de acerto, ponderada
+    pela posição.
+\end{itemize}
+
+As métricas de ranking são importantes pois, na prática, o usuário visualiza
+apenas os primeiros itens recomendados, tornando a ordenação tão relevante
+quanto a acurácia pontual.
+
+\subsection{Hiperparametrização}
+
+A hiperparametrização foi realizada via \textbf{grid search com validação
+cruzada de 5 folds}, utilizando as partições pré-definidas do MovieLens 100k
+(\texttt{u1}--\texttt{u5}). Para cada combinação de hiperparâmetros, o
+algoritmo foi treinado e avaliado em cada fold, e o RMSE médio ($\pm$ desvio
+padrão) foi registrado.
+
+A Tabela~\ref{tab:hyperparams} apresenta os hiperparâmetros investigados e os
+melhores valores encontrados para cada algoritmo.
+
+\begin{table}[h]
+\caption{Hiperparâmetros investigados e melhores valores encontrados via
+validação cruzada de 5 folds.}
+\label{tab:hyperparams}
+\scriptsize
+\begin{tabular}{@{}p{1.6cm}p{2.0cm}p{2.2cm}p{1.8cm}@{}}
+\toprule
+\textbf{Algoritmo} & \textbf{Parâmetro} & \textbf{Faixa testada} & \textbf{Melhor} \\
+\midrule
+Simple Mem. & $\alpha$ (peso) & 0,0 a 1,0 & 0,4 \\
+User-Based  & $k$ (vizinhos) & 5 a 80 & 30 \\
+Item-Based  & $k$ (vizinhos) & 5 a 80 & 30 \\
+Slope One   & $\lambda$ (shrink) & 0 a 150 & 100 \\
+\midrule
+Simple Mod. & $\lambda$ (reg.) & $10^{-7}$ a 25 & 10 \\
+SVD         & $d$, $\eta$, $\lambda$ & 10--50, 0,005--0,01, 0,01--0,05 & 50; 0,01; 0,01 \\
+BPR         & $d$, $\eta$, $\lambda$ & 10--50, 0,01--0,05, 0,001--0,01 & 50; 0,05; 0,0025 \\
+FM          & $d$, $\eta$, $\lambda_w$, $\lambda_v$ & 5--20, 0,005--0,01, 0,001--0,01 & 20; 0,01; 0,001; 0,001 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Resultados}
+
+\subsubsection{Predição de Rating}
+
+A Tabela~\ref{tab:results} apresenta os resultados da avaliação final,
+utilizando os melhores hiperparâmetros encontrados.
+
+\begin{table}[h]
+\caption{Resultados da avaliação final com hiperparâmetros otimizados
+(partição ua.base/ua.test).}
+\label{tab:results}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Algoritmo} & \textbf{RMSE} & \textbf{MAE} & \textbf{P@10} & \textbf{R@10} & \textbf{NDCG@10} & \textbf{MAP@10} \\
+\midrule
+Simple Memory & 0,995 & 0,804 & 0,051 & 0,092 & 0,077 & 0,036 \\
+User-Based    & 0,959 & 0,750 & 0,002 & 0,003 & 0,002 & 0,000 \\
+Item-Based    & 0,956 & 0,747 & 0,010 & 0,019 & 0,013 & 0,005 \\
+Slope One     & 0,961 & 0,756 & 0,002 & 0,003 & 0,004 & 0,001 \\
+\midrule
+Simple Model  & 0,976 & 0,774 & 0,023 & 0,041 & 0,031 & 0,013 \\
+\textbf{SVD}  & \textbf{0,933} & \textbf{0,734} & 0,022 & 0,040 & 0,033 & 0,014 \\
+BPR           & 2,256 & 1,900 & \textbf{0,072} & \textbf{0,127} & \textbf{0,113} & \textbf{0,057} \\
+FM            & 0,937 & 0,738 & 0,037 & 0,068 & 0,059 & 0,030 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Em termos de predição de rating, o \textbf{SVD Regularizado} obteve o melhor
+desempenho com RMSE de 0,933 e MAE de 0,734, seguido de perto pelo
+\textbf{FM} (RMSE = 0,937). Ambos superaram os métodos baseados em memória,
+confirmando a superioridade das abordagens de fatoração matricial para esta
+tarefa, em linha com os achados da literatura~\cite{koren2009}.
+
+Entre os métodos baseados em memória, o \textbf{Item-Based kNN} obteve o menor
+RMSE (0,956), levemente melhor que o User-Based (0,959) e o Slope One (0,961).
+O \textbf{Simple Memory} obteve o pior resultado entre os métodos de memória
+(0,995), o que é esperado por ser um baseline simples.
+
+O \textbf{BPR} apresentou RMSE muito alto (2,256) porque foi projetado para
+otimizar ranking via feedback implícito, não para predizer ratings. Isso é
+esperado e não representa uma falha do algoritmo, mas sim uma inadequação da
+métrica para este tipo de modelo.
+
+\subsubsection{Qualidade de Recomendação}
+
+Em métricas de ranking (Precision@10, Recall@10, NDCG@10, MAP@10), o cenário
+se inverte: o \textbf{BPR} obteve os melhores resultados em todas as métricas
+de ranking (Precision@10 = 0,072, Recall@10 = 0,127), demonstrando que a
+otimização pairwise é eficaz para gerar listas de recomendação de qualidade.
+
+O \textbf{Simple Memory} obteve o segundo melhor Precision@10 (0,051), o que
+se explica pela sua estratégia de recomendar itens populares --- uma heurística
+surpreendentemente competitiva. O \textbf{FM} ficou em terceiro (0,037),
+oferecendo um bom equilíbrio entre predição e ranking.
+
+Notavelmente, os métodos kNN (User-Based e Item-Based) obtiveram métricas de
+ranking muito baixas, apesar de boas métricas de predição. Isso sugere que a
+acurácia na predição pontual de ratings não se traduz necessariamente em boas
+listas de recomendação.
+
+\subsubsection{Visualizações}
+
+As Figuras~\ref{fig:scatter} e~\ref{fig:roc} apresentam, respectivamente, os
+scatter plots (rating real vs.\ predito) e as curvas ROC para quatro algoritmos
+representativos. As Figuras~\ref{fig:confusion} mostram as matrizes de confusão
+correspondentes, considerando o limiar de relevância em 4,0.
+
+\begin{figure*}[!t]
+\centering
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/svd/svd_scatter.pdf}
+  \caption{SVD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/fm/fm_scatter.pdf}
+  \caption{FM}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/item_based/item_based_scatter.pdf}
+  \caption{Item-Based}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/bpr/bpr_scatter.pdf}
+  \caption{BPR}
+\end{subfigure}
+\caption{Scatter plots: rating real vs.\ predito.}
+\label{fig:scatter}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/svd/svd_roc.pdf}
+  \caption{SVD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/fm/fm_roc.pdf}
+  \caption{FM}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/item_based/item_based_roc.pdf}
+  \caption{Item-Based}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/bpr/bpr_roc.pdf}
+  \caption{BPR}
+\end{subfigure}
+\caption{Curvas ROC (limiar = 4,0).}
+\label{fig:roc}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/svd/svd_confusion.pdf}
+  \caption{SVD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/fm/fm_confusion.pdf}
+  \caption{FM}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/item_based/item_based_confusion.pdf}
+  \caption{Item-Based}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/charts/bpr/bpr_confusion.pdf}
+  \caption{BPR}
+\end{subfigure}
+\caption{Matrizes de confusão (limiares = 4,0).}
+\label{fig:confusion}
+\end{figure*}
+
+\subsubsection{Análise de Sensibilidade}
+
+A análise de sensibilidade investigou como a variação de um hiperparâmetro-chave
+impacta o desempenho (RMSE) de cada algoritmo, mantendo os demais fixos nos
+melhores valores. Os principais achados foram:
+
+\textbf{Número de vizinhos $k$ (User-Based e Item-Based)}: ambos os algoritmos
+apresentaram uma curva em forma de U, com RMSE diminuindo rapidamente de $k=5$
+até $k=20$--$30$, estabilizando e depois aumentando levemente para $k>50$. O
+ponto ótimo $k=30$ indica um equilíbrio entre incluir vizinhos informados e
+evitar ruído de vizinhos pouco similares.
+
+\textbf{Número de fatores latentes (SVD, BPR, FM)}: para os três modelos, mais
+fatores latentes resultaram em melhor desempenho, com ganhos decrescentes. O SVD
+passou de 0,928 ($d=5$) para 0,911 ($d=100$), uma melhoria de 1,8\%. O FM
+apresentou comportamento similar, mas com ganho menos monotônico.
+
+\textbf{Shrinkage $\lambda$ do Slope One}: o RMSE diminuiu monotonicamente com
+o aumento de $\lambda$ (de 0,948 sem shrinkage para 0,943 com $\lambda=150$),
+indicando que a suavização por contagem é benéfica e que pares com poucos
+co-raters devem ser penalizados.
+
+\textbf{Peso $\alpha$ do Simple Memory}: a curva mostrou um formato de U
+simétrico com mínimo em $\alpha=0{,}4$, indicando que dar peso ligeiramente
+maior à média do item ($60\%$) do que à do usuário ($40\%$) é ótimo. Isso sugere
+que a qualidade intrínseca do item é um preditor ligeiramente mais informativo
+que o padrão geral do usuário.
+
+\textbf{Regularização do Simple Model}: o RMSE decresceu até $\lambda=10$ e
+depois voltou a subir para $\lambda=25$, mostrando uma curva em U típica do
+trade-off entre viés e variância.
+
+As Figuras~\ref{fig:sens_memory} a~\ref{fig:sens_model} ilustram graficamente
+essas tendências.
+
+\begin{figure*}[!t]
+\centering
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/simple_memory_alpha.pdf}
+  \caption{Simple Mem.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/user_based_k.pdf}
+  \caption{User-Based}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/item_based_k.pdf}
+  \caption{Item-Based}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/slope_one_shrink.pdf}
+  \caption{Slope One}
+\end{subfigure}
+\caption{Sensibilidade -- algoritmos baseados em memória.}
+\label{fig:sens_memory}
+\end{figure*}
+
+\begin{figure*}[!t]
+\centering
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/simple_model_reg.pdf}
+  \caption{Simple Model}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/svd_n_factors.pdf}
+  \caption{SVD}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/bpr_n_factors.pdf}
+  \caption{BPR}
+\end{subfigure}\hfill
+\begin{subfigure}{0.23\textwidth}
+  \includegraphics[width=\textwidth]{results/sensitivity/fm_n_factors.pdf}
+  \caption{FM}
+\end{subfigure}
+\caption{Sensibilidade -- algoritmos baseados em modelo.}
+\label{fig:sens_model}
+\end{figure*}
+
+%% ============================================================
+\section{Conclusão}
+
+Este trabalho implementou e comparou oito algoritmos de filtragem colaborativa,
+divididos entre abordagens baseadas em memória e baseadas em modelo, sobre a
+base MovieLens 100k.
+
+Os principais achados foram: (1)~o \textbf{SVD Regularizado} obteve o melhor
+desempenho em predição de rating (RMSE = 0,933), confirmando a eficácia da
+fatoração matricial; (2)~o \textbf{BPR} superou todos os outros em métricas de
+ranking, demonstrando a importância de otimizar diretamente para a tarefa
+desejada; (3)~a acurácia na predição de rating não implica necessariamente em
+boas recomendações, como evidenciado pelos métodos kNN; e (4)~a
+hiperparametrização produziu melhorias consistentes, com o SVD reduzindo seu
+RMSE de 0,958 (default) para 0,933 (otimizado), uma melhoria de 2,6\%.
+
+A análise de sensibilidade revelou padrões interpretáveis: o número ideal de
+vizinhos para métodos kNN é finito ($k \approx 30$), enquanto modelos de
+fatoração se beneficiam de mais fatores latentes com retornos decrescentes.
+
+Como sugestões para trabalhos futuros, destacamos: (a)~explorar técnicas de
+ensemble combinando modelos de predição e de ranking; (b)~avaliar os algoritmos
+em bases maiores (MovieLens 1M, CiaoDVD) para testar a escalabilidade;
+(c)~incorporar informações contextuais e de conteúdo para melhorar as
+recomendações cold-start; e (d)~investigar técnicas de preprocessamento como
+normalização de ratings e remoção de outliers.
+
+\vfill
+%% ============================================================
+\bibliographystyle{ACM-Reference-Format}
+\begin{thebibliography}{3}
+
+\bibitem{adomavicius2005}
+G.~Adomavicius and A.~Tuzhilin.
+\newblock Toward the next generation of recommender systems: a survey of the
+  state-of-the-art and possible extensions.
+\newblock \emph{IEEE Transactions on Knowledge and Data Engineering},
+  17(6):734--749, 2005.
+
+\bibitem{koren2009}
+Y.~Koren, R.~Bell, and C.~Volinsky.
+\newblock Matrix factorization techniques for recommender systems.
+\newblock \emph{Computer}, 42(8):30--37, 2009.
+
+\bibitem{ricci2011}
+F.~Ricci, L.~Rokach, B.~Shapira, and P.~B. Kantor.
+\newblock \emph{Recommender Systems Handbook}.
+\newblock Springer, 2011.
+
+\end{thebibliography}
+
+\end{document}

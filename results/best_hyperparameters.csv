@@ -1,0 +1,2 @@
+algorithm,best_params,mean_rmse,std_rmse
+simple_memory,alpha=0.4,0.9822592609870888,0.008144513792515838
