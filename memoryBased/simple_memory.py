@@ -12,7 +12,8 @@ from core.recommender_registry import register_recommender
 
 @register_recommender('simple_memory')
 class SimpleMemoryRecommender:
-    def __init__(self, train_df=None):
+    def __init__(self, train_df=None, alpha: float = 0.5):
+        self.alpha = float(alpha)
         self.user_means = {}
         self.item_means = {}
         self.global_mean = 3.0
@@ -44,7 +45,7 @@ class SimpleMemoryRecommender:
             return im
         if im is None:
             return um
-        return 0.5 * um + 0.5 * im
+        return self.alpha * um + (1 - self.alpha) * im
 
     def recommend(self, user, k=10):
         return self.popular_items[:k]
