@@ -183,9 +183,13 @@ def tune_all(algos_filter=None):
             row = {"algorithm": name}
             row.update(r)
             rows.append(row)
-    df = pd.DataFrame(rows)
+    new_df = pd.DataFrame(rows)
     out_path = os.path.join(RESULTS_DIR, "hyperparameter_tuning.csv")
-    df.to_csv(out_path, index=False)
+    if os.path.isfile(out_path):
+        existing = pd.read_csv(out_path)
+        existing = existing[~existing["algorithm"].isin(new_df["algorithm"].unique())]
+        new_df = pd.concat([existing, new_df], ignore_index=True)
+    new_df.to_csv(out_path, index=False)
     print(f"Full results saved to {out_path}")
 
     print("\n" + "=" * 60)
@@ -203,9 +207,13 @@ def tune_all(algos_filter=None):
             "std_rmse": best_result["std_rmse"],
         })
 
-    summary_df = pd.DataFrame(summary_rows)
+    new_summary = pd.DataFrame(summary_rows)
     summary_path = os.path.join(RESULTS_DIR, "best_hyperparameters.csv")
-    summary_df.to_csv(summary_path, index=False)
+    if os.path.isfile(summary_path):
+        existing_s = pd.read_csv(summary_path)
+        existing_s = existing_s[~existing_s["algorithm"].isin(new_summary["algorithm"].unique())]
+        new_summary = pd.concat([existing_s, new_summary], ignore_index=True)
+    new_summary.to_csv(summary_path, index=False)
     print(f"\nBest params saved to {summary_path}")
 
     return best_params

@@ -59,18 +59,11 @@ class StudyRunner:
         dcg = 0.0
         for idx, item in enumerate(recommended[:k], start=1):
             rel = 1.0 if item in relevant else 0.0
-            if idx == 1:
-                dcg += rel
-            else:
-                dcg += rel / np.log2(idx + 0.0)
-        # ideal DCG
+            dcg += rel / np.log2(idx + 1)
         ideal_rels = [1.0] * min(len(relevant), k)
         idcg = 0.0
         for idx, rel in enumerate(ideal_rels, start=1):
-            if idx == 1:
-                idcg += rel
-            else:
-                idcg += rel / np.log2(idx + 0.0)
+            idcg += rel / np.log2(idx + 1)
         return dcg / idcg if idcg > 0 else 0.0
 
     @staticmethod

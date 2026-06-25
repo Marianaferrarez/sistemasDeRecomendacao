@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.24)  24 JUN 2026 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.6.24)  25 JUN 2026 13:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1080,26 +1080,28 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 9.0pt on input line 43.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 43.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 61.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 (C:\Users\Mari\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
@@ -1107,47 +1109,47 @@ File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 9.0pt on input line 72.
+(Font)              scaled to size 9.0pt on input line 68.
 LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 72.
+(Font)              scaled to size 6.6pt on input line 68.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 5.5pt on input line 72.
-LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 77
+(Font)              scaled to size 5.5pt on input line 68.
+LaTeX Font Info:    Trying to load font information for T1+zi4 on input line 80
 .
 
 (C:\Users\Mari\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\t1zi4.fd
 File: t1zi4.fd 2018/01/14 T1/zi4 (Inconsolata)
 )
 LaTeX Font Info:    Font shape `T1/zi4/m/n' will be
-(Font)              scaled to size 9.0pt on input line 77.
+(Font)              scaled to size 9.0pt on input line 80.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `zi4' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 90.
+(Font)              scaled to size 9.0pt on input line 93.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 90.
+(Font)              scaled to size 9.0pt on input line 93.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 9.0pt on input line 114.
+(Font)              scaled to size 9.0pt on input line 117.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.6pt on input line 114.
+(Font)              scaled to size 6.6pt on input line 117.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 5.5pt on input line 114.
+(Font)              scaled to size 5.5pt on input line 117.
 
 [1.1{C:/Users/Mari/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/M
 ari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{C:
@@ -1155,242 +1157,237 @@ ari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{C:
 .enc}
 
 {C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_nh7
-7jq.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolat
-a/i4-t1-4.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libe
-rtine/lbtn_oexx6f.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dv
-ips/libertine/lbtn_fygcup.enc}]
+7jq.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/
+lbtn_7grukw.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/in
+consolata/i4-t1-4.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dv
+ips/libertine/lbtn_oexx6f.enc}{C:/Users/Mari/AppData/Local/Programs/MiKTeX/font
+s/enc/dvips/libertine/lbtn_fygcup.enc}]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 175.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.5pt on input line 176.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 6.0pt on input line 178.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 6.5pt on input line 179.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 6.0pt on input line 181.
 
-Underfull \hbox (badness 1565) in paragraph at lines 186--186
+Underfull \hbox (badness 1565) in paragraph at lines 189--189
 []\T1/LinuxLibertineT-TLF/m/n/6 (+20) 10--50, 0,005--0,01, 0,01--
  []
 
 
-Underfull \hbox (badness 1565) in paragraph at lines 187--187
-[]\T1/LinuxLibertineT-TLF/m/n/6 (+20) 10--50, 0,01--0,05, 0,001--
- []
-
-
-Underfull \hbox (badness 1400) in paragraph at lines 188--188
+Underfull \hbox (badness 1400) in paragraph at lines 191--191
 []\T1/LinuxLibertineT-TLF/m/n/6 (+20) 5--20, 0,005--0,01, 0,001--
  []
 
 
-Overfull \hbox (5.0936pt too wide) in paragraph at lines 176--191
+Overfull \hbox (5.0936pt too wide) in paragraph at lines 179--194
  [][] 
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 204.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 8.0pt on input line 205.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.0pt on input line 205.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 8.0pt on input line 207.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `OML/nxlmi/m/it' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 8.0pt on input line 208.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 6.0pt on input line 208.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 8.0pt on input line 210.
 
-Overfull \hbox (37.61247pt too wide) in paragraph at lines 205--220
+Overfull \hbox (37.61247pt too wide) in paragraph at lines 208--223
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<results/charts/svd/svd_scatter.pdf, id=84, 433.62pt x 433.62pt>
+<results/charts/svd/svd_scatter.pdf, id=87, 433.62pt x 433.62pt>
 File: results/charts/svd/svd_scatter.pdf Graphic file (type pdf)
 <use results/charts/svd/svd_scatter.pdf>
 Package pdftex.def Info: results/charts/svd/svd_scatter.pdf  used on input line
- 265.
+ 268.
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
-<results/charts/fm/fm_scatter.pdf, id=85, 433.62pt x 433.62pt>
+<results/charts/fm/fm_scatter.pdf, id=88, 433.62pt x 433.62pt>
 File: results/charts/fm/fm_scatter.pdf Graphic file (type pdf)
 <use results/charts/fm/fm_scatter.pdf>
 Package pdftex.def Info: results/charts/fm/fm_scatter.pdf  used on input line 2
-69.
+72.
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
-<results/charts/item_based/item_based_scatter.pdf, id=86, 433.62pt x 433.62pt>
+<results/charts/item_based/item_based_scatter.pdf, id=89, 433.62pt x 433.62pt>
 File: results/charts/item_based/item_based_scatter.pdf Graphic file (type pdf)
 <use results/charts/item_based/item_based_scatter.pdf>
 Package pdftex.def Info: results/charts/item_based/item_based_scatter.pdf  used
- on input line 273.
+ on input line 276.
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
-<results/charts/bpr/bpr_scatter.pdf, id=87, 433.62pt x 433.62pt>
+<results/charts/bpr/bpr_scatter.pdf, id=90, 433.62pt x 433.62pt>
 File: results/charts/bpr/bpr_scatter.pdf Graphic file (type pdf)
 <use results/charts/bpr/bpr_scatter.pdf>
 Package pdftex.def Info: results/charts/bpr/bpr_scatter.pdf  used on input line
- 277.
+ 280.
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
 
-Class acmart Warning: A possible image without description on input line 282.
+Class acmart Warning: A possible image without description on input line 285.
 
-<results/charts/svd/svd_roc.pdf, id=88, 433.62pt x 433.62pt>
+<results/charts/svd/svd_roc.pdf, id=91, 433.62pt x 433.62pt>
 File: results/charts/svd/svd_roc.pdf Graphic file (type pdf)
 <use results/charts/svd/svd_roc.pdf>
-Package pdftex.def Info: results/charts/svd/svd_roc.pdf  used on input line 287
+Package pdftex.def Info: results/charts/svd/svd_roc.pdf  used on input line 290
 .
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
-<results/charts/fm/fm_roc.pdf, id=89, 433.62pt x 433.62pt>
+<results/charts/fm/fm_roc.pdf, id=92, 433.62pt x 433.62pt>
 File: results/charts/fm/fm_roc.pdf Graphic file (type pdf)
 <use results/charts/fm/fm_roc.pdf>
-Package pdftex.def Info: results/charts/fm/fm_roc.pdf  used on input line 291.
+Package pdftex.def Info: results/charts/fm/fm_roc.pdf  used on input line 294.
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
-<results/charts/item_based/item_based_roc.pdf, id=90, 433.62pt x 433.62pt>
+<results/charts/item_based/item_based_roc.pdf, id=93, 433.62pt x 433.62pt>
 File: results/charts/item_based/item_based_roc.pdf Graphic file (type pdf)
 <use results/charts/item_based/item_based_roc.pdf>
 Package pdftex.def Info: results/charts/item_based/item_based_roc.pdf  used on 
-input line 295.
+input line 298.
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
-<results/charts/bpr/bpr_roc.pdf, id=91, 433.62pt x 433.62pt>
+<results/charts/bpr/bpr_roc.pdf, id=94, 433.62pt x 433.62pt>
 File: results/charts/bpr/bpr_roc.pdf Graphic file (type pdf)
 <use results/charts/bpr/bpr_roc.pdf>
-Package pdftex.def Info: results/charts/bpr/bpr_roc.pdf  used on input line 299
+Package pdftex.def Info: results/charts/bpr/bpr_roc.pdf  used on input line 302
 .
 (pdftex.def)             Requested size: 116.44568pt x 116.44377pt.
 
-Class acmart Warning: A possible image without description on input line 304.
+Class acmart Warning: A possible image without description on input line 307.
 
-<results/charts/svd/svd_confusion.pdf, id=92, 361.35pt x 289.08pt>
+<results/charts/svd/svd_confusion.pdf, id=95, 361.35pt x 289.08pt>
 File: results/charts/svd/svd_confusion.pdf Graphic file (type pdf)
 <use results/charts/svd/svd_confusion.pdf>
 Package pdftex.def Info: results/charts/svd/svd_confusion.pdf  used on input li
-ne 309.
+ne 312.
 (pdftex.def)             Requested size: 116.44568pt x 93.1559pt.
-<results/charts/fm/fm_confusion.pdf, id=93, 361.35pt x 289.08pt>
+<results/charts/fm/fm_confusion.pdf, id=96, 361.35pt x 289.08pt>
 File: results/charts/fm/fm_confusion.pdf Graphic file (type pdf)
 <use results/charts/fm/fm_confusion.pdf>
 Package pdftex.def Info: results/charts/fm/fm_confusion.pdf  used on input line
- 313.
+ 316.
 (pdftex.def)             Requested size: 116.44568pt x 93.1559pt.
-<results/charts/item_based/item_based_confusion.pdf, id=94, 361.35pt x 289.08pt
+<results/charts/item_based/item_based_confusion.pdf, id=97, 361.35pt x 289.08pt
 >
 File: results/charts/item_based/item_based_confusion.pdf Graphic file (type pdf
 )
 <use results/charts/item_based/item_based_confusion.pdf>
 Package pdftex.def Info: results/charts/item_based/item_based_confusion.pdf  us
-ed on input line 317.
+ed on input line 320.
 (pdftex.def)             Requested size: 116.44568pt x 93.1559pt.
-<results/charts/bpr/bpr_confusion.pdf, id=95, 361.35pt x 289.08pt>
+<results/charts/bpr/bpr_confusion.pdf, id=98, 361.35pt x 289.08pt>
 File: results/charts/bpr/bpr_confusion.pdf Graphic file (type pdf)
 <use results/charts/bpr/bpr_confusion.pdf>
 Package pdftex.def Info: results/charts/bpr/bpr_confusion.pdf  used on input li
-ne 321.
+ne 324.
 (pdftex.def)             Requested size: 116.44568pt x 93.1559pt.
 
-Class acmart Warning: A possible image without description on input line 326.
+Class acmart Warning: A possible image without description on input line 329.
 
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 7.0pt on input line 349.
+(Font)              scaled to size 7.0pt on input line 343.
 [2.2]
-<results/sensitivity/simple_memory_alpha.pdf, id=113, 505.89pt x 325.215pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<results/sensitivity/simple_memory_alpha.pdf, id=116, 505.89pt x 325.215pt>
 File: results/sensitivity/simple_memory_alpha.pdf Graphic file (type pdf)
 <use results/sensitivity/simple_memory_alpha.pdf>
 Package pdftex.def Info: results/sensitivity/simple_memory_alpha.pdf  used on i
-nput line 366.
+nput line 369.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
-<results/sensitivity/user_based_k.pdf, id=114, 505.89pt x 325.215pt>
+<results/sensitivity/user_based_k.pdf, id=117, 505.89pt x 325.215pt>
 File: results/sensitivity/user_based_k.pdf Graphic file (type pdf)
 <use results/sensitivity/user_based_k.pdf>
 Package pdftex.def Info: results/sensitivity/user_based_k.pdf  used on input li
-ne 370.
+ne 373.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
-<results/sensitivity/item_based_k.pdf, id=115, 505.89pt x 325.215pt>
+<results/sensitivity/item_based_k.pdf, id=118, 505.89pt x 325.215pt>
 File: results/sensitivity/item_based_k.pdf Graphic file (type pdf)
 <use results/sensitivity/item_based_k.pdf>
 Package pdftex.def Info: results/sensitivity/item_based_k.pdf  used on input li
-ne 374.
+ne 377.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
-<results/sensitivity/slope_one_shrink.pdf, id=116, 505.89pt x 325.215pt>
+<results/sensitivity/slope_one_shrink.pdf, id=119, 505.89pt x 325.215pt>
 File: results/sensitivity/slope_one_shrink.pdf Graphic file (type pdf)
 <use results/sensitivity/slope_one_shrink.pdf>
 Package pdftex.def Info: results/sensitivity/slope_one_shrink.pdf  used on inpu
-t line 378.
+t line 381.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
 
 
-Class acmart Warning: A possible image without description on input line 383.
+Class acmart Warning: A possible image without description on input line 386.
 
-<results/sensitivity/simple_model_reg.pdf, id=117, 505.89pt x 325.215pt>
+<results/sensitivity/simple_model_reg.pdf, id=120, 505.89pt x 325.215pt>
 File: results/sensitivity/simple_model_reg.pdf Graphic file (type pdf)
 <use results/sensitivity/simple_model_reg.pdf>
 Package pdftex.def Info: results/sensitivity/simple_model_reg.pdf  used on inpu
-t line 388.
+t line 391.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
-<results/sensitivity/svd_n_factors.pdf, id=118, 505.89pt x 325.215pt>
+<results/sensitivity/svd_n_factors.pdf, id=121, 505.89pt x 325.215pt>
 File: results/sensitivity/svd_n_factors.pdf Graphic file (type pdf)
 <use results/sensitivity/svd_n_factors.pdf>
 Package pdftex.def Info: results/sensitivity/svd_n_factors.pdf  used on input l
-ine 392.
+ine 395.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
-<results/sensitivity/bpr_n_factors.pdf, id=119, 505.89pt x 325.215pt>
+<results/sensitivity/bpr_n_factors.pdf, id=122, 505.89pt x 325.215pt>
 File: results/sensitivity/bpr_n_factors.pdf Graphic file (type pdf)
 <use results/sensitivity/bpr_n_factors.pdf>
 Package pdftex.def Info: results/sensitivity/bpr_n_factors.pdf  used on input l
-ine 396.
+ine 399.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
-<results/sensitivity/fm_n_factors.pdf, id=120, 505.89pt x 325.215pt>
+<results/sensitivity/fm_n_factors.pdf, id=123, 505.89pt x 325.215pt>
 File: results/sensitivity/fm_n_factors.pdf Graphic file (type pdf)
 <use results/sensitivity/fm_n_factors.pdf>
 Package pdftex.def Info: results/sensitivity/fm_n_factors.pdf  used on input li
-ne 400.
+ne 403.
 (pdftex.def)             Requested size: 116.44568pt x 74.85742pt.
 
-Class acmart Warning: A possible image without description on input line 405.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Class acmart Warning: A possible image without description on input line 408.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1403,7 +1400,7 @@ _roc.pdf> <./results/charts/svd/svd_confusion.pdf> <./results/charts/fm/fm_conf
 usion.pdf> <./results/charts/item_based/item_based_confusion.pdf> <./results/ch
 arts/bpr/bpr_confusion.pdf>]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 7.0pt on input line 443.
+(Font)              scaled to size 7.0pt on input line 446.
 
 
 Class acmart Warning: Some images may lack descriptions.
@@ -1421,21 +1418,17 @@ rtant steps when creating your papers will ensure that the widest possible audi
 ence can ingest your work..
 
 
-Overfull \vbox (1.798pt too high) has occurred while \output is active []
-
-
 (C:\Users\Mari\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-pdfdoc.de
 f
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
 )
 (C:\Users\Mari\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-utf8.def
 File: se-utf8.def 2019/11/29 v1.12 stringenc: UTF-8
-) [4.4{C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lb
-tn_7grukw.enc} <./results/sensitivity/simple_memory_alpha.pdf> <./results/sensi
-tivity/user_based_k.pdf> <./results/sensitivity/item_based_k.pdf> <./results/se
-nsitivity/slope_one_shrink.pdf> <./results/sensitivity/simple_model_reg.pdf> <.
-/results/sensitivity/svd_n_factors.pdf> <./results/sensitivity/bpr_n_factors.pd
-f> <./results/sensitivity/fm_n_factors.pdf>] (relatorio.aux)
+) [4.4 <./results/sensitivity/simple_memory_alpha.pdf> <./results/sensitivity/u
+ser_based_k.pdf> <./results/sensitivity/item_based_k.pdf> <./results/sensitivit
+y/slope_one_shrink.pdf> <./results/sensitivity/simple_model_reg.pdf> <./results
+/sensitivity/svd_n_factors.pdf> <./results/sensitivity/bpr_n_factors.pdf> <./re
+sults/sensitivity/fm_n_factors.pdf>] (relatorio.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -1444,11 +1437,11 @@ Package rerunfilecheck Info: File `relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: 6D81EA753992341F43BE778850AA862D;1375.
  ) 
 Here is how much of TeX's memory you used:
- 22664 strings out of 467871
- 378228 string characters out of 5418860
- 863143 words of memory out of 5000000
- 50531 multiletter control sequences out of 15000+600000
- 814214 words of font info for 399 fonts, out of 8000000 for 9000
+ 22689 strings out of 467871
+ 378877 string characters out of 5418860
+ 864845 words of memory out of 5000000
+ 50533 multiletter control sequences out of 15000+600000
+ 821651 words of font info for 413 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,13n,131p,1008b,717s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/I
@@ -1470,9 +1463,9 @@ rs/Mari/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI7.pfb><C:
 :/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb>
 <C:/Users/Mari/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb
 >
-Output written on relatorio.pdf (4 pages, 1300557 bytes).
+Output written on relatorio.pdf (4 pages, 1303251 bytes).
 PDF statistics:
- 1147 PDF objects out of 1200 (max. 8388607)
- 34 named destinations out of 1000 (max. 500000)
- 109253 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 1149 PDF objects out of 1200 (max. 8388607)
+ 35 named destinations out of 1000 (max. 500000)
+ 113349 words of extra memory for PDF output out of 128383 (max. 10000000)
 

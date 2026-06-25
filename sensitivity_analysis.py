@@ -187,9 +187,13 @@ def main():
                 "std_rmse": r["std_rmse"],
             })
 
-    df = pd.DataFrame(all_rows)
+    new_df = pd.DataFrame(all_rows)
     csv_path = os.path.join(OUT_DIR, "sensitivity_results.csv")
-    df.to_csv(csv_path, index=False)
+    if os.path.isfile(csv_path):
+        existing = pd.read_csv(csv_path)
+        existing = existing[~existing["algorithm"].isin(new_df["algorithm"].unique())]
+        new_df = pd.concat([existing, new_df], ignore_index=True)
+    new_df.to_csv(csv_path, index=False)
     print(f"All results saved to {csv_path}")
 
 

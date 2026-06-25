@@ -71,7 +71,7 @@ def main():
     save_dir = os.path.join('results')
     results = runner.run(algos, train, test, k=10, save_dir=save_dir)
 
-    print('\nEvaluation results:'.format(save_dir))
+    print(f'\nEvaluation results (saved to {save_dir}):')
     for name, metrics in results.items():
         print(f'\n{name}:')
         for m, v in metrics.items():

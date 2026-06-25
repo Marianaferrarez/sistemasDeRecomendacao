@@ -46,6 +46,54 @@ Saídas em `results/`:
 - `predictions_<algo>.csv` — previsões verdadeiras e previstas por par usuário-item
 - `recommendations_<algo>.csv` — recomendações ranqueadas por usuário com indicador de acerto
 
+Hiperparametrização
+-------------------
+
+Para buscar os melhores hiperparâmetros via grid search com validação cruzada
+de 5 folds (splits `u1`–`u5` do MovieLens):
+
+```bash
+# todos os algoritmos
+python hyperparameter_tuning.py
+
+# apenas algoritmos específicos
+python hyperparameter_tuning.py svd fm
+```
+
+Saídas em `results/`:
+- `hyperparameter_tuning.csv` — todas as combinações testadas com RMSE médio e desvio padrão
+- `best_hyperparameters.csv` — resumo dos melhores parâmetros por algoritmo
+
+Execução com melhores hiperparâmetros
+--------------------------------------
+
+Para re-executar a avaliação completa usando os melhores hiperparâmetros
+encontrados no tuning:
+
+```bash
+python run_best.py
+```
+
+Sobrescreve os arquivos em `results/` com os resultados otimizados.
+
+Análise de sensibilidade
+-------------------------
+
+Para investigar o impacto de um hiperparâmetro-chave no desempenho de cada
+algoritmo e gerar gráficos:
+
+```bash
+# todos os algoritmos
+python sensitivity_analysis.py
+
+# apenas algoritmos específicos
+python sensitivity_analysis.py svd user_based
+```
+
+Saídas em `results/sensitivity/`:
+- `sensitivity_results.csv` — RMSE por valor de parâmetro por algoritmo
+- `<algo>_<param>.pdf` — gráfico de sensibilidade por algoritmo
+
 Gerar gráficos
 ---------------
 
@@ -62,6 +110,19 @@ python charts.py
 # gerar apenas para um algoritmo registrado (ex.: simple_memory)
 python charts.py simple_memory
 ```
+
+Relatório
+----------
+
+O relatório final está em `relatorio.tex` (template ACM). Para compilar:
+
+```bash
+pdflatex relatorio.tex
+pdflatex relatorio.tex
+```
+
+O PDF gerado inclui tabelas de resultados, gráficos de visualização e análise
+de sensibilidade.
 
 
 ## Algoritmos incluídos

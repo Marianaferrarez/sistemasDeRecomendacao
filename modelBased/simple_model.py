@@ -26,6 +26,7 @@ class SimpleModelRecommender:
         items = {}
         user_counts = {}
         item_counts = {}
+        self._user_items = {}
         for _, row in train_df.iterrows():
             u = int(row['user_id'])
             i = int(row['item_id'])
@@ -36,6 +37,7 @@ class SimpleModelRecommender:
             items.setdefault(i, 0.0)
             items[i] += (r - self.global_mean)
             item_counts[i] = item_counts.get(i, 0) + 1
+            self._user_items.setdefault(u, set()).add(i)
         self.user_bias = {u: users[u] / (user_counts[u] + self.reg) for u in users}
         self.item_bias = {i: items[i] / (item_counts[i] + self.reg) for i in items}
 
@@ -45,6 +47,6 @@ class SimpleModelRecommender:
         return float(self.global_mean + ub + ib)
 
     def recommend(self, user, k=10):
-        # naive: rank items by item bias + global mean
+        rated = self._user_items.get(user, set())
         items_sorted = sorted(self.item_bias.items(), key=lambda x: x[1], reverse=True)
-        return [int(i) for i, _ in items_sorted[:k]]
+        return [int(i) for i, _ in items_sorted if i not in rated][:k]

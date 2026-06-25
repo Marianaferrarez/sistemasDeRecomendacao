@@ -24,12 +24,14 @@ class SimpleMemoryRecommender:
     def fit(self, train_df):
         users = defaultdict(list)
         items = defaultdict(list)
+        self._user_items = defaultdict(set)
         for _, row in train_df.iterrows():
             u = int(row['user_id'])
             i = int(row['item_id'])
             r = float(row['rating'])
             users[u].append(r)
             items[i].append(r)
+            self._user_items[u].add(i)
         self.user_means = {u: np.mean(rs) for u, rs in users.items()}
         self.item_means = {i: np.mean(rs) for i, rs in items.items()}
         self.global_mean = np.mean([r for rs in users.values() for r in rs]) if users else 3.0
@@ -48,4 +50,5 @@ class SimpleMemoryRecommender:
         return self.alpha * um + (1 - self.alpha) * im
 
     def recommend(self, user, k=10):
-        return self.popular_items[:k]
+        rated = self._user_items.get(user, set())
+        return [i for i in self.popular_items if i not in rated][:k]

@@ -57,12 +57,15 @@ competição Netflix Prize demonstrou que havia oportunidades significativas par
 melhorar os algoritmos existentes, impulsionando pesquisas em técnicas como
 fatoração matricial, que se tornaram estado da arte~\cite{koren2009}.
 
-O objetivo deste trabalho é implementar e comparar diferentes algoritmos de
-filtragem colaborativa, incluindo quatro abordagens baseadas em memória e
+O objetivo deste trabalho, desenvolvido no âmbito da disciplina
+\emph{Introdução à Teoria de Sistemas de Recomendação}, ministrada pelo
+Prof.\ Filipe Braida na UFRRJ, é implementar e comparar diferentes algoritmos
+de filtragem colaborativa, incluindo quatro abordagens baseadas em memória e
 quatro baseadas em modelo. Além da comparação direta, investigamos a
 hiperparametrização de cada algoritmo por meio de grid search com validação
 cruzada de 5 folds, e realizamos uma análise de sensibilidade para avaliar o
-impacto dos principais hiperparâmetros no desempenho dos modelos.
+impacto dos principais hiperparâmetros no desempenho dos modelos. O
+código-fonte está disponível publicamente\footnote{https://github.com/ravsil/sistemasDeRecomendacao}.
 
 %% ============================================================
 \section{Experimentos}
@@ -184,7 +187,7 @@ Slope One   & $\lambda$ (shrink) & 0 a 150 & 100 \\
 \midrule
 Simple Mod. & $\lambda$ (reg.) & $10^{-7}$ a 25 & 10 \\
 SVD         & $d$, $\eta$, $\lambda$ & 10--50, 0,005--0,01, 0,01--0,05 & 50; 0,01; 0,01 \\
-BPR         & $d$, $\eta$, $\lambda$ & 10--50, 0,01--0,05, 0,001--0,01 & 50; 0,05; 0,0025 \\
+BPR         & $d$, $\eta$, $\lambda$ & 10--50, 0,01--0,05, 0,0025--0,01 & 50; 0,05; 0,0025 \\
 FM          & $d$, $\eta$, $\lambda_w$, $\lambda_v$ & 5--20, 0,005--0,01, 0,001--0,01 & 20; 0,01; 0,001; 0,001 \\
 \bottomrule
 \end{tabular}
@@ -206,24 +209,24 @@ utilizando os melhores hiperparâmetros encontrados.
 \toprule
 \textbf{Algoritmo} & \textbf{RMSE} & \textbf{MAE} & \textbf{P@10} & \textbf{R@10} & \textbf{NDCG@10} & \textbf{MAP@10} \\
 \midrule
-Simple Memory & 0,995 & 0,804 & 0,051 & 0,092 & 0,077 & 0,036 \\
+Simple Memory & 0,995 & 0,804 & 0,083 & 0,148 & 0,132 & 0,064 \\
 User-Based    & 0,959 & 0,750 & 0,002 & 0,003 & 0,002 & 0,000 \\
 Item-Based    & 0,956 & 0,747 & 0,010 & 0,019 & 0,013 & 0,005 \\
 Slope One     & 0,961 & 0,756 & 0,002 & 0,003 & 0,004 & 0,001 \\
 \midrule
-Simple Model  & 0,976 & 0,774 & 0,023 & 0,041 & 0,031 & 0,013 \\
-\textbf{SVD}  & \textbf{0,933} & \textbf{0,734} & 0,022 & 0,040 & 0,033 & 0,014 \\
-BPR           & 2,256 & 1,900 & \textbf{0,072} & \textbf{0,127} & \textbf{0,113} & \textbf{0,057} \\
-FM            & 0,937 & 0,738 & 0,037 & 0,068 & 0,059 & 0,030 \\
+Simple Model  & 0,976 & 0,774 & 0,033 & 0,058 & 0,047 & 0,020 \\
+\textbf{SVD}  & \textbf{0,933} & \textbf{0,734} & 0,037 & 0,065 & 0,060 & 0,028 \\
+BPR           & 2,256 & 1,900 & \textbf{0,072} & \textbf{0,127} & \textbf{0,117} & \textbf{0,057} \\
+FM            & 0,959 & 0,759 & 0,032 & 0,055 & 0,039 & 0,014 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 Em termos de predição de rating, o \textbf{SVD Regularizado} obteve o melhor
-desempenho com RMSE de 0,933 e MAE de 0,734, seguido de perto pelo
-\textbf{FM} (RMSE = 0,937). Ambos superaram os métodos baseados em memória,
-confirmando a superioridade das abordagens de fatoração matricial para esta
-tarefa, em linha com os achados da literatura~\cite{koren2009}.
+desempenho com RMSE de 0,933 e MAE de 0,734. O \textbf{FM} obteve RMSE de
+0,959, próximo dos métodos baseados em memória. Os resultados confirmam a
+superioridade da fatoração matricial com biases (SVD) para esta tarefa, em
+linha com os achados da literatura~\cite{koren2009}.
 
 Entre os métodos baseados em memória, o \textbf{Item-Based kNN} obteve o menor
 RMSE (0,956), levemente melhor que o User-Based (0,959) e o Slope One (0,961).
@@ -242,10 +245,10 @@ se inverte: o \textbf{BPR} obteve os melhores resultados em todas as métricas
 de ranking (Precision@10 = 0,072, Recall@10 = 0,127), demonstrando que a
 otimização pairwise é eficaz para gerar listas de recomendação de qualidade.
 
-O \textbf{Simple Memory} obteve o segundo melhor Precision@10 (0,051), o que
+O \textbf{Simple Memory} obteve o segundo melhor Precision@10 (0,083), o que
 se explica pela sua estratégia de recomendar itens populares --- uma heurística
-surpreendentemente competitiva. O \textbf{FM} ficou em terceiro (0,037),
-oferecendo um bom equilíbrio entre predição e ranking.
+surpreendentemente competitiva. O \textbf{SVD} ficou em terceiro (0,037),
+mostrando que a fatoração matricial também produz boas listas de recomendação.
 
 Notavelmente, os métodos kNN (User-Based e Item-Based) obtiveram métricas de
 ranking muito baixas, apesar de boas métricas de predição. Isso sugere que a
@@ -256,7 +259,7 @@ listas de recomendação.
 
 As Figuras~\ref{fig:scatter} e~\ref{fig:roc} apresentam, respectivamente, os
 scatter plots (rating real vs.\ predito) e as curvas ROC para quatro algoritmos
-representativos. As Figuras~\ref{fig:confusion} mostram as matrizes de confusão
+representativos. A Figura~\ref{fig:confusion} mostra as matrizes de confusão
 correspondentes, considerando o limiar de relevância em 4,0.
 
 \begin{figure*}[!t]
@@ -441,7 +444,7 @@ G.~Adomavicius and A.~Tuzhilin.
 \newblock Toward the next generation of recommender systems: a survey of the
   state-of-the-art and possible extensions.
 \newblock \emph{IEEE Transactions on Knowledge and Data Engineering},
-  17(6):734--749, 2005.
+  17(6):734--749, jun 2005. ISSN 1041-4347. doi: 10.1109/TKDE.2005.99.
 
 \bibitem{koren2009}
 Y.~Koren, R.~Bell, and C.~Volinsky.
@@ -451,7 +454,7 @@ Y.~Koren, R.~Bell, and C.~Volinsky.
 \bibitem{ricci2011}
 F.~Ricci, L.~Rokach, B.~Shapira, and P.~B. Kantor.
 \newblock \emph{Recommender Systems Handbook}.
-\newblock Springer, 2011.
+\newblock Springer, 2011. doi: 10.1007/978-0-387-85820-3.
 
 \end{thebibliography}
 

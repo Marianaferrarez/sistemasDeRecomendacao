@@ -106,16 +106,15 @@ class FMRecommender:
                 self.w0 += self.lr * (e - self.reg_w * self.w0)
                 # update linear weights
                 for idx in feats:
-                    grad_w = -2.0 * e * 1.0 + 2.0 * self.reg_w * self.w[idx]
-                    self.w[idx] -= self.lr * grad_w
+                    self.w[idx] += self.lr * (e - self.reg_w * self.w[idx])
 
-                # update V for features
-                # derivative for v_if: -2*e*(sum_v[f] - v_if) + 2*reg_v*v_if
+                # update V: compute all gradients before applying
+                v_grads = {}
                 for f_idx in feats:
-                    # vectorized across factors
-                    v_if = self.V[f_idx, :]
-                    grad_v = -2.0 * e * (sum_v - v_if) + 2.0 * self.reg_v * v_if
-                    self.V[f_idx, :] -= self.lr * grad_v
+                    v_if = self.V[f_idx, :].copy()
+                    v_grads[f_idx] = e * (sum_v - v_if) - self.reg_v * v_if
+                for f_idx, grad in v_grads.items():
+                    self.V[f_idx, :] += self.lr * grad
 
         # clamp rating bounds not required here
 

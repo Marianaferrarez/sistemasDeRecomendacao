@@ -66,7 +66,12 @@ class RegularizedSVDRecommender:
         with np.errstate(divide='ignore', invalid='ignore'):
             self.item_means = np.where(item_counts > 0, item_sums / item_counts, 0.0)
 
-        # SGD over observed ratings
+        self._user_ratings = {}
+        for _, row in train_df.iterrows():
+            u = int(row['user_id'])
+            it = int(row['item_id'])
+            self._user_ratings.setdefault(u, {})[it] = float(row['rating'])
+
         rows = list(train_df.itertuples(index=False))
         for epoch in range(self.n_epochs):
             if self.verbose:
